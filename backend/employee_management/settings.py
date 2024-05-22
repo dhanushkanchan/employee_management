@@ -11,10 +11,16 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os, sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+with open(os.path.expanduser('~') + '/.dassault/config') as fh:
+    ENV_DETAILS = eval(fh.read())
+
+print(ENV_DETAILS)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -25,7 +31,7 @@ SECRET_KEY = 'django-insecure-d2+nv=y*t_urev4#@eonxvrx(qaefg**m_qra5q#_8an4^(h!s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ENV_DETAILS.get('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -37,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'employees'
 ]
 
 MIDDLEWARE = [
@@ -75,8 +83,12 @@ WSGI_APPLICATION = 'employee_management.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': ENV_DETAILS.get('DB_NAME'),
+        'USER': ENV_DETAILS.get('DB_USER'),
+        'PASSWORD': ENV_DETAILS.get('DB_PASSWORD'),
+        'HOST': ENV_DETAILS.get('DB_HOST'),
+        'PORT': ENV_DETAILS.get('DB_PORT'),
     }
 }
 
