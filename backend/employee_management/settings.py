@@ -20,8 +20,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 with open(os.path.expanduser('~') + '/.dassault/config') as fh:
     ENV_DETAILS = eval(fh.read())
 
-print(ENV_DETAILS)
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 

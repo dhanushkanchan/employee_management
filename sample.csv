@@ -1,0 +1,21 @@
+first_name,last_name,email,phone_number,date_of_birth,date_of_joining,position,department,salary,is_current,supervisor_email
+John,Doe,john.doe@example.com,123-456-7890,1990-01-01,2020-01-01,CEO,Executive,200000,true,
+Jane,Smith,jane.smith@example.com,234-567-8901,1985-05-15,2018-03-15,CTO,Executive,180000,true,john.doe@example.com
+Michael,Brown,michael.brown@example.com,345-678-9012,1975-02-20,2016-08-12,CFO,Executive,175000,true,john.doe@example.com
+Linda,Johnson,linda.johnson@example.com,456-789-0123,1982-11-30,2019-07-10,COO,Executive,170000,true,john.doe@example.com
+Patricia,Williams,patricia.williams@example.com,567-890-1234,1988-05-22,2017-04-22,Director of Engineering,Engineering,150000,true,jane.smith@example.com
+Robert,Jones,robert.jones@example.com,678-901-2345,1980-12-15,2015-06-01,Engineering Manager,Engineering,130000,true,patricia.williams@example.com
+Jennifer,Davis,jennifer.davis@example.com,789-012-3456,1992-08-18,2019-11-05,Engineering Manager,Engineering,130000,true,patricia.williams@example.com
+William,Miller,william.miller@example.com,890-123-4567,1983-01-25,2014-09-13,Senior Engineer,Engineering,120000,true,robert.jones@example.com
+Elizabeth,Garcia,elizabeth.garcia@example.com,901-234-5678,1994-07-02,2021-01-19,Engineer,Engineering,100000,true,william.miller@example.com
+David,Rodriguez,david.rodriguez@example.com,012-345-6789,1989-04-14,2020-03-27,Engineer,Engineering,95000,true,william.miller@example.com
+Barbara,Martinez,barbara.martinez@example.com,123-456-7890,1991-11-03,2019-08-09,HR Manager,HR,90000,true,linda.johnson@example.com
+James,Hernandez,james.hernandez@example.com,234-567-8901,1987-09-22,2018-02-15,HR Specialist,HR,70000,true,barbara.martinez@example.com
+Maria,Lopez,maria.lopez@example.com,345-678-9012,1990-06-30,2019-04-25,Finance Manager,Finance,105000,true,michael.brown@example.com
+Christopher,Gonzalez,christopher.gonzalez@example.com,456-789-0123,1986-03-17,2017-07-08,Accountant,Finance,80000,true,maria.lopez@example.com
+Sarah,Wilson,sarah.wilson@example.com,567-890-1234,1993-12-11,2020-05-22,Marketing Manager,Marketing,110000,true,linda.johnson@example.com
+Mark,Anderson,mark.anderson@example.com,678-901-2345,1984-07-25,2016-10-30,Sales Manager,Sales,115000,true,linda.johnson@example.com
+Laura,Thomas,laura.thomas@example.com,789-012-3456,1995-03-21,2021-02-15,Sales Representative,Sales,85000,true,mark.anderson@example.com
+Daniel,Jackson,daniel.jackson@example.com,890-123-4567,1996-01-10,2021-07-19,Sales Representative,Sales,85000,true,mark.anderson@example.com
+Jessica,White,jessica.white@example.com,901-234-5678,1988-04-05,2019-09-05,Customer Support Manager,Support,95000,true,patricia.williams@example.com
+Kevin,Harris,kevin.harris@example.com,012-345-6789,1991-02-08,2020-06-11,Customer Support Specialist,Support,70000,true,jessica.white@example.com
