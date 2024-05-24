@@ -1,11 +1,14 @@
 // src/components/Sidebar.js
 import React from 'react';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar, Divider, Box, Typography } from '@mui/material';
+import { Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar, Divider, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import SettingsIcon from '@mui/icons-material/Settings';
+
 
 const drawerWidth = 240;
 
@@ -44,11 +47,11 @@ const Sidebar = () => (
     <Divider />
     <List>
       <ListItem button component={Link} to="/account">
-        <ListItemIcon><AccountTreeIcon style={{ color: '#fff' }} /></ListItemIcon>
+        <ListItemIcon><AccountCircle style={{ color: '#fff' }} /></ListItemIcon>
         <ListItemText primary="Account" />
       </ListItem>
       <ListItem button component={Link} to="/error">
-        <ListItemIcon><AccountTreeIcon style={{ color: '#fff' }} /></ListItemIcon>
+        <ListItemIcon><SettingsIcon style={{ color: '#fff' }} /></ListItemIcon>
         <ListItemText primary="Settings" />
       </ListItem>
     </List>
