@@ -23,8 +23,8 @@ const SalaryDistributionChart = ({ data }) => {
     datasets: [{
       label: 'Number of Employees',
       data: data.map(item => item.count),
-      backgroundColor: 'rgba(75, 192, 192, 0.2)',
-      borderColor: 'rgba(75, 192, 192, 1)',
+      backgroundColor: 'rgba(28, 106, 232, 0.4)',
+      borderColor: 'rgba(28, 106, 232, 1)',
       borderWidth: 1,
     }],
   };
