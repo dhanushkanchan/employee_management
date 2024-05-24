@@ -1,4 +1,4 @@
-first_name,last_name,email,phone_number,date_of_birth,date_of_joining,position,department,salary,is_current,supervisor_email
+first_name,last_name,email,phone_number,date_of_birth,date_of_joining,position,salary,is_current
 John,Doe,john.doe@example.com,123-456-7890,1990-01-01,2020-01-01,CEO,Executive,200000,true,
 Jane,Smith,jane.smith@example.com,234-567-8901,1985-05-15,2018-03-15,CTO,Executive,180000,true,john.doe@example.com
 Michael,Brown,michael.brown@example.com,345-678-9012,1975-02-20,2016-08-12,CFO,Executive,175000,true,john.doe@example.com
