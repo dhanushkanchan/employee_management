@@ -3,7 +3,7 @@ import { Paper, Typography } from '@mui/material';
 import PeopleIcon from '@mui/icons-material/People';
 
 const TotalEmployees = ({ total }) => {
-    if (!total) {
+    if (total == null) {
         return <div>Loading...</div>;
       }
 

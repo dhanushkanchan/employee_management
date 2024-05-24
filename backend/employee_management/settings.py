@@ -17,8 +17,8 @@ import os, sys
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-with open(os.path.expanduser('~') + '/.dassault/config') as fh:
-    ENV_DETAILS = eval(fh.read())
+# with open(os.path.expanduser('~') + '/.dassault/config') as fh:
+#     ENV_DETAILS = eval(fh.read())
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-d2+nv=y*t_urev4#@eonxvrx(qaefg**m_qra5q#_8an4^(h!s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ENV_DETAILS.get('ALLOWED_HOSTS')
+ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
@@ -89,11 +89,11 @@ WSGI_APPLICATION = 'employee_management.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': ENV_DETAILS.get('DB_NAME'),
-        'USER': ENV_DETAILS.get('DB_USER'),
-        'PASSWORD': ENV_DETAILS.get('DB_PASSWORD'),
-        'HOST': ENV_DETAILS.get('DB_HOST'),
-        'PORT': ENV_DETAILS.get('DB_PORT'),
+        "NAME": "employee_db",
+        "USER": "dassault_admin",
+        "PASSWORD": "pwd",
+        "HOST": "db",
+        "PORT": 3306,
     }
 }
 

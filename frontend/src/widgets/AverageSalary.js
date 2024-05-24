@@ -4,7 +4,7 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 const AverageSalary = ({ average }) => {
     if (average == null) {
-        return <div>Loading...</div>;
+        average = 0;
     }
   return (
     <Paper elevation={3} sx={{ p: 2, textAlign: 'center' }}>

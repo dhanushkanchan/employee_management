@@ -1,55 +1,68 @@
-// src/components/HierarchyView.js
+// src/components/HierarchyTree.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Box, Paper, Typography } from '@mui/material';
 import Tree from 'react-d3-tree';
-import { Container, Typography, Paper } from '@mui/material';
 
-const HierarchyView = () => {
+const HierarchyTree = () => {
   const [hierarchyData, setHierarchyData] = useState(null);
 
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/hierarchy/')
       .then(response => {
-        setHierarchyData(transformHierarchyData(response.data));
+        setHierarchyData(response.data);
       })
-      .catch(error => {
-        console.error('Error fetching hierarchy data:', error);
-      });
+      .catch(error => console.error('Error fetching hierarchy:', error));
   }, []);
 
-  const transformHierarchyData = (data) => {
-    const transformNode = (node) => ({
-      name: `${node.employee.first_name} ${node.employee.last_name}`,
+  if (!hierarchyData) {
+    return <div>Loading...</div>;
+  }
+
+  const renderCustomNode = ({ nodeDatum }) => (
+    <g>
+      <circle r="15" />
+      <text fill="black" strokeWidth="1" x="20">
+        {nodeDatum.name}
+      </text>
+      <text fill="black" strokeWidth="1" x="20" dy="20">
+        {nodeDatum.attributes.position}
+      </text>
+      <text fill="black" strokeWidth="1" x="20" dy="40">
+        {nodeDatum.attributes.department}
+      </text>
+    </g>
+  );
+
+  const transformData = (data) => {
+    if (!data || !data.length) return null;
+    return data.map(item => ({
+      name: `${item.employee.first_name} ${item.employee.last_name}`,
       attributes: {
-        position: node.employee.position,
-        department: node.employee.department,
+        position: item.employee.position,
+        department: item.employee.department,
       },
-      children: node.subordinates.map(transformNode),
-    });
-    return data.map(transformNode);
+      children: transformData(item.subordinates),
+    }));
   };
 
   return (
-    <Container>
-      <Typography variant="h4" gutterBottom>
-        Organization Hierarchy
-      </Typography>
-      <Paper style={{ padding: '16px' }}>
-        {hierarchyData && (
-          <div id="treeWrapper" style={{ width: '100%', height: '500px' }}>
-            <Tree
-              data={hierarchyData}
-              orientation="vertical"
-              translate={{ x: 200, y: 50 }}
-              pathFunc="elbow"
-              collapsible={true}
-              initialDepth={1}
-            />
-          </div>
-        )}
+    <Box sx={{ p: 3 }}>
+      <Paper sx={{ p: 2 }}>
+        <Typography variant="h6" gutterBottom>
+          Employee Hierarchy
+        </Typography>
+        <Box sx={{ height: '600px' }}>
+          <Tree 
+            data={transformData(hierarchyData)}
+            renderCustomNodeElement={renderCustomNode}
+            orientation="vertical"
+            pathFunc="elbow"
+          />
+        </Box>
       </Paper>
-    </Container>
+    </Box>
   );
 };
 
-export default HierarchyView;
+export default HierarchyTree;
