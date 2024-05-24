@@ -42,8 +42,9 @@ for _ in range(499):
     supervisors.append(email)
 
 df = pd.DataFrame(data, columns=[
-    'First Name', 'Last Name', 'Email', 'Phone Number', 'Date of Birth', 'Date of Joining', 'Date of Leaving',
-    'Position', 'Department', 'Salary', 'Is Current', 'Supervisor Email'
-])
+        "first_name", "last_name", "email", "phone_number", "date_of_birth",
+        "date_of_joining","date_of_leaving", "position", "department", "salary", "is_current", "supervisor_email"
+    ]
+)
 
 df.to_csv('employees.csv', index=False)

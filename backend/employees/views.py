@@ -42,14 +42,6 @@ class EmployeeStatistics(APIView):
 
         # Monthly employee joinings for the past 5 years
         four_years_ago = now() - datetime.timedelta(days=4*365)
-        # monthly_joinings = (
-        #     Employee.objects.filter(date_of_joining__gte=five_years_ago)
-        #     .annotate(month=TruncMonth('date_of_joining'))
-        #     .values('month')
-        #     .annotate(count=Count('employee_id'))
-        #     .order_by('month')
-        # )
-
         # Employee count trend over last 5 years
         months = [four_years_ago + datetime.timedelta(days=30*i) for i in range(48)]
         
