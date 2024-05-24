@@ -1,13 +1,14 @@
+// src/components/HierarchyView.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Tree from 'react-d3-tree';
-import { Container, Typography } from '@mui/material';
+import { Container, Typography, Paper } from '@mui/material';
 
 const HierarchyView = () => {
   const [hierarchyData, setHierarchyData] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/hierarchy/')
+    axios.get('http://127.0.0.1:8000/api/hierarchy/')
       .then(response => {
         setHierarchyData(transformHierarchyData(response.data));
       })
@@ -33,18 +34,20 @@ const HierarchyView = () => {
       <Typography variant="h4" gutterBottom>
         Organization Hierarchy
       </Typography>
-      {hierarchyData && (
-        <div id="treeWrapper" style={{ width: '100%', height: '500px' }}>
-          <Tree
-            data={hierarchyData}
-            orientation="vertical"
-            translate={{ x: 200, y: 50 }}
-            pathFunc="elbow"
-            collapsible={true}
-            initialDepth={1}
-          />
-        </div>
-      )}
+      <Paper style={{ padding: '16px' }}>
+        {hierarchyData && (
+          <div id="treeWrapper" style={{ width: '100%', height: '500px' }}>
+            <Tree
+              data={hierarchyData}
+              orientation="vertical"
+              translate={{ x: 200, y: 50 }}
+              pathFunc="elbow"
+              collapsible={true}
+              initialDepth={1}
+            />
+          </div>
+        )}
+      </Paper>
     </Container>
   );
 };

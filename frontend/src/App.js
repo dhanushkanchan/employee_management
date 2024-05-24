@@ -1,25 +1,23 @@
 // src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import Layout from './components/Layout';
+import Dashboard from './components/Dashboard';
 import EmployeeList from './components/EmployeeList';
 import UploadCSV from './components/UploadCSV';
-import HierarchyView from './components/OrgHierarchy';
+import HierarchyView from './components/HierarchyView';
 
-
-const App = () => {
-  return (
-    <Router>
-      <div>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<EmployeeList />} />
-          <Route path="/upload" element={<UploadCSV />} />
-          <Route path="/hierarchy" element={<HierarchyView />} />
-        </Routes>
-      </div>
-    </Router>
-  );
-};
+const App = () => (
+  <Router>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/employees" element={<EmployeeList />} />
+        <Route path="/upload" element={<UploadCSV />} />
+        <Route path="/hierarchy" element={<HierarchyView />} />
+      </Routes>
+    </Layout>
+  </Router>
+);
 
 export default App;

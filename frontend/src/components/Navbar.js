@@ -9,7 +9,7 @@ const Navbar = () => {
         <Typography variant="h6" style={{ flexGrow: 1 }}>
           Employee Management
         </Typography>
-        <Button color="inherit" component={Link} to="/">Employee List</Button>
+        <Button color="inherit" component={Link} to="/employees">Employee List</Button>
         <Button color="inherit" component={Link} to="/upload">Upload CSV</Button>
         <Button color="inherit" component={Link} to="/hierarchy">Hierarchy</Button>
       </Toolbar>
