@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# Employee Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple Employee Management System that allows managers to upload a list of employees from a CSV file, view and categorize employees as current or former, and visualize the organizational hierarchy.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Upload employee data from a CSV file
+- View and categorize employees as current or former
+- Visualize employee hierarchy
+- Responsive frontend using Material-UI and React
+- Backend API using Django REST framework
+- Dockerized for easy deployment
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Docker and Docker Compose installed on your machine
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/yourusername/employee-management.git
+    cd employee-management
+    ```
 
-### `npm run build`
+2. **Set up environment configuration**:
+    Create a file named `.env` in the project root directory and add the following environment variables:
+    ```env
+    DB_NAME=employee_db
+    DB_USER=dassault_admin
+    DB_PASSWORD=pwd
+    DB_HOST=db
+    DB_PORT=3306
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Build and start the Docker containers**:
+    ```bash
+    docker-compose up --build
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **Apply Django migrations**:
+    ```bash
+    docker exec -it backend python manage.py migrate
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. **Create a superuser for accessing the Django admin panel**:
+    ```bash
+    docker exec -it backend python manage.py createsuperuser
+    ```
 
-### `npm run eject`
+## Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Access the application**:
+    - Frontend: `http://localhost:3000`
+    - Backend API: `http://localhost:8000`
+    - Django Admin Panel: `http://localhost:8000/admin`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Upload CSV File**:
+    - Navigate to the upload page and upload a CSV file containing employee data. The CSV file should have the following columns:
+        - `first_name`, `last_name`, `email`, `phone_number`, `date_of_birth`, `date_of_joining`, `position`, `department`, `salary`, `is_current`, `supervisor_email`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **View Employee List**:
+    - Navigate to the employee list page to view and categorize employees.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Visualize Hierarchy**:
+    - Navigate to the hierarchy page to visualize the organizational structure.
 
-## Learn More
+## API Endpoints
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **GET /api/employees/**: List employees
+- **POST /api/upload/**: Upload a CSV file to add/update employees
+- **GET /api/statistics/**: Get the dashboard analytics and charts data
+- **GET /api/hierarchy/**: Get the organizational hierarchy
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
